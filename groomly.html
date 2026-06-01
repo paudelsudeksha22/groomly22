@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GROOMLY</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #3dcaf1;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #2c4850;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        nav {
+            background-color: #34495e;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        section {
+            display: none;
+            padding: 20px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="time"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #219150;
+        }
+    </style>
+    <script>
+        function showSection(id) {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(id).classList.add('active');
+        }
+
+        window.onload = () => {
+            showSection('home'); // Show home section by default
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>GROOMLY</h1>
+    </header>
+
+    <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('register')">Register Barber Shop</a>
+        <a href="#" onclick="showSection('login')">Customer Login</a>
+        <a href="#" onclick="showSection('book')">Book Appointment</a>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="active">
+        <h2>Welcome</h2>
+        <p>Welcome to the GROOMLY. You can register your shop or book an appointment easily.</p>
+    </section>
+
+    <!-- Barber Shop Registration -->
+    <section id="register">
+        <h2>Register Your Barber Shop</h2>
+        <form>
+            <label>Barber Shop Name:</label>
+            <input type="text" required>
+
+            <label>Owner Name:</label>
+            <input type="text" required>
+
+            <label>Phone Number:</label>
+            <input type="tel" required>
+
+            <label>Address:</label>
+            <textarea required></textarea>
+
+            <input type="submit" value="Register">
+        </form>
+    </section>
+
+    <!-- Customer Login -->
+    <section id="login">
+        <h2>Customer Login</h2>
+        <form onsubmit="showSection('book'); return false;">
+            <label>Your Name:</label>
+            <input type="text" required>
+
+            <label>Phone Number:</label>
+            <input type="tel" required>
+
+            <input type="submit" value="Login">
+        </form>
+    </section>
+
+    <!-- Booking Page -->
+    <section id="book">
+        <h2>Book an Appointment</h2>
+        <form>
+            <label>Select Barber Shop:</label>
+            <select required>
+                <option value="">--Select--</option>
+                <option value="Barber 1">Barber 1</option>
+                <option value="Barber 2">Barber 2</option>
+                <option value="Barber 3">Barber 3</option>
+            </select>
+
+            <label>Select Date:</label>
+            <input type="date" required>
+
+            <label>Select Time:</label>
+            <input type="time" required>
+
+            <input type="submit" value="Book Appointment">
+        </form>
+    </section>
+
+</body>
+</html>
